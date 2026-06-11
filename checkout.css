@@ -99,6 +99,10 @@ i.fas, i.fab {
     align-items: center;
     gap: 4px;
 }
+.logo-img {
+    max-height: 50px;
+    width: auto;
+}
 
 .co-bolt {
     color: var(--gold);
@@ -258,6 +262,11 @@ i.fas, i.fab {
     font-weight: 600;
     letter-spacing: 1.5px;
     color: var(--white);
+}
+
+.kit-img{
+    width: 200px;
+    height: 180px;
 }
 
 /* ===== CART ITEM ===== */

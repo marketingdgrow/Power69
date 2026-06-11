@@ -1,11 +1,9 @@
 /* ================================================
    POWER 69 — PREMIUM SCRIPT.JS
-   All animations, interactions, dynamic content
    ================================================ */
 
 'use strict';
 
-/* ===== LOAD DATA & INIT ===== */
 let siteData = {};
 
 async function loadData() {
@@ -28,13 +26,13 @@ function initLoader() {
   const pct = document.querySelector('.loader-pct');
   const loader = document.getElementById('loader');
   let progress = 0;
-  
+
   const interval = setInterval(() => {
     const increment = Math.random() * 15 + 5;
     progress = Math.min(progress + increment, 100);
     fill.style.width = progress + '%';
     pct.textContent = Math.floor(progress) + '%';
-    
+
     if (progress >= 100) {
       clearInterval(interval);
       setTimeout(() => {
@@ -62,7 +60,6 @@ function afterLoad() {
   initContactForm();
   initCursorGlow();
   initMouseParallax();
-  // Hero reveal
   setTimeout(() => {
     document.querySelectorAll('.hero .reveal-left, .hero .reveal-right').forEach(el => {
       el.classList.add('revealed');
@@ -76,14 +73,14 @@ function initParticles() {
   if (!canvas) return;
   const ctx = canvas.getContext('2d');
   let W, H, particles = [];
-  
+
   function resize() {
     W = canvas.width = canvas.offsetWidth;
     H = canvas.height = canvas.offsetHeight;
   }
   resize();
   window.addEventListener('resize', () => { resize(); createParticles(); });
-  
+
   function createParticles() {
     particles = [];
     const count = Math.min(Math.floor((W * H) / 8000), 120);
@@ -100,7 +97,7 @@ function initParticles() {
     }
   }
   createParticles();
-  
+
   function draw() {
     ctx.clearRect(0, 0, W, H);
     particles.forEach(p => {
@@ -127,7 +124,6 @@ function initNavbar() {
   window.addEventListener('scroll', () => {
     nav.classList.toggle('scrolled', window.scrollY > 40);
   });
-  // Smooth anchor scroll
   document.querySelectorAll('a[href^="#"]').forEach(a => {
     a.addEventListener('click', e => {
       const target = document.querySelector(a.getAttribute('href'));
@@ -165,6 +161,14 @@ function buildAllSections() {
   buildIngredients();
   buildTestimonials();
   buildFAQ();
+  buildProductSections();
+}
+
+/* ===== ICON HELPER ===== */
+function getIcon(fa_icon, size) {
+  if (!fa_icon) return '';
+  // fa_icon format: "fa-solid fa-dumbbell" or "fa-solid fa-droplet"
+  return `<i class="${fa_icon}" style="font-size:${size || '1em'}"></i>`;
 }
 
 /* FEATURES */
@@ -173,51 +177,48 @@ function buildFeatures() {
   if (!grid || !siteData.features) return;
   grid.innerHTML = siteData.features.map(f => `
     <div class="feature-card reveal-up">
-      <div class="fc-icon">${f.icon}</div>
+      <div class="fc-icon"><i class="${f.fa_icon}"></i></div>
       <div class="fc-title">${f.title}</div>
       <p class="fc-desc">${f.desc}</p>
     </div>
   `).join('');
 }
 
-/* PRODUCTS */
+/* PRODUCTS - New Horizontal Layout */
 function buildProducts() {
   const grid = document.getElementById('productsGrid');
   if (!grid || !siteData.products) return;
-  grid.innerHTML = siteData.products.map(p => `
+  grid.innerHTML = siteData.products.map((p, idx) => `
     <div class="product-card reveal-up">
-      <div class="pc-image-wrap">
-        <div class="pc-product-viz">
-          <div class="pc-glow"></div>
-          <div class="pc-visual">
-            <div class="pc-visual-brand">P⚡WER 69</div>
-            <div class="pc-visual-type">${p.subtitle.split(' ')[0].toUpperCase()}</div>
-            <div class="pc-visual-name">${p.name.split(' ').pop().toUpperCase()}</div>
-            <div class="pc-visual-icon">${p.icon}</div>
-            <div class="pc-visual-vol">${p.volume}</div>
-            <div class="pc-visual-wave"></div>
-          </div>
+      <div class="pc-number">0${idx + 1}</div>
+      <div class="pc-icon-wrap">
+        <div class="pc-icon-circle">
+          <i class="${p.fa_icon}"></i>
         </div>
       </div>
       <div class="pc-body">
+        <div class="pc-vol-badge">${p.volume}</div>
         <div class="pc-name">${p.name}</div>
         <div class="pc-sub">${p.subtitle}</div>
         <p class="pc-desc">${p.description}</p>
         <ul class="pc-benefits">
-          ${p.benefits.map(b => `<li>${b}</li>`).join('')}
+          ${p.benefits.map(b => `<li><i class="fa-solid fa-check"></i>${b}</li>`).join('')}
         </ul>
       </div>
     </div>
   `).join('');
 }
 
-/* WHY */
+/* WHY - New 4-col grid with icon + stat */
 function buildWhy() {
   const grid = document.getElementById('whyGrid');
   if (!grid || !siteData.why_power69) return;
   grid.innerHTML = siteData.why_power69.map(w => `
     <div class="why-card reveal-up">
-      <div class="wc-icon">${w.icon}</div>
+      <div class="wc-icon-wrap">
+        <div class="wc-icon-bg"></div>
+        <div class="wc-icon"><i class="${w.fa_icon}"></i></div>
+      </div>
       <div class="wc-title">${w.title}</div>
       <p class="wc-desc">${w.desc}</p>
     </div>
@@ -230,6 +231,7 @@ function buildStats() {
   if (!grid || !siteData.statistics) return;
   grid.innerHTML = siteData.statistics.map(s => `
     <div class="stat-item reveal-up">
+      <div class="stat-icon"><i class="${s.fa_icon}"></i></div>
       <div class="stat-number" data-target="${s.number}" data-suffix="${s.suffix}">0${s.suffix}</div>
       <div class="stat-label">${s.label}</div>
     </div>
@@ -242,7 +244,10 @@ function buildBenefits() {
   if (!tl || !siteData.benefits_timeline) return;
   tl.innerHTML = siteData.benefits_timeline.map(b => `
     <div class="bt-item reveal-up">
-      <div class="bt-dot"></div>
+      <div class="bt-icon-wrap">
+        <div class="bt-icon"><i class="${b.fa_icon}"></i></div>
+        <div class="bt-dot"></div>
+      </div>
       <div class="bt-week">${b.week}</div>
       <div class="bt-title">${b.title}</div>
       <p class="bt-desc">${b.desc}</p>
@@ -255,98 +260,99 @@ function buildIngredients() {
   const grid = document.getElementById('ingredientsGrid');
   if (!grid || !siteData.ingredients) return;
   grid.innerHTML = siteData.ingredients.map(ing => `
-    <div class="ingredient-card reveal-up" onclick="openLightbox('${ing.name}', '${ing.latin}', '${ing.benefit}', '${ing.icon}')">
-      <div class="ic-icon">${ing.icon}</div>
+    <div class="ingredient-card reveal-up" onclick="openIngredientLightbox('${ing.name}', '${ing.latin}', '${ing.benefit}', '${ing.fa_icon}')">
+      <div class="ic-icon"><i class="${ing.fa_icon}"></i></div>
       <div class="ic-name">${ing.name}</div>
       <div class="ic-latin">${ing.latin}</div>
       <p class="ic-benefit">${ing.benefit}</p>
+      <div class="ic-learn">Learn More <i class="fa-solid fa-arrow-right"></i></div>
     </div>
   `).join('');
 }
 
-/* TESTIMONIALS */
-let currentSlide = 0;
-let slideInterval;
-let totalSlides = 0;
-const visibleCards = () => window.innerWidth >= 900 ? 3 : 1;
+/* ===== 3 INDIVIDUAL PRODUCT SECTIONS ===== */
+function buildProductSections() {
+  const container = document.getElementById('productSectionsContainer');
+  if (!container || !siteData.products) return;
 
+  const layouts = [
+    { imgSide: 'left',  bg: 'var(--navy)' },
+    { imgSide: 'right', bg: 'var(--black)' },
+    { imgSide: 'left',  bg: 'var(--navy)' },
+  ];
+
+  const imgMap = ['./img/oil.png', './img/capsules.png', './img/laddu.png'];
+
+  container.innerHTML = siteData.products.map((p, i) => {
+    const layout = layouts[i];
+    const isRight = layout.imgSide === 'right';
+    return `
+      <section class="individual-product-section section-pad" style="background:${layout.bg};" id="product-detail-${p.id}">
+        <div class="container">
+          <div class="ip-grid ${isRight ? 'ip-grid--reverse' : ''}">
+            <div class="ip-image-col reveal-${isRight ? 'right' : 'left'}">
+              <div class="ip-img-wrap">
+                <div class="ip-img-glow"></div>
+                <div class="ip-img-ring"></div>
+                <img src="${imgMap[i]}" alt="${p.name}" class="ip-product-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex'">
+                <div class="ip-fallback-visual" style="display:none;">
+                  <div class="ip-fallback-inner">
+                    <i class="${p.fa_icon}"></i>
+                    <div class="ip-fallback-name">${p.name}</div>
+                    <div class="ip-fallback-vol">${p.volume}</div>
+                  </div>
+                </div>
+                <div class="ip-badge">${p.volume}</div>
+              </div>
+            </div>
+            <div class="ip-content-col reveal-${isRight ? 'left' : 'right'}">
+             
+              <h2 class="ip-title">${p.name}<br/><span class="gold-text">${p.subtitle}</span></h2>
+              <p class="ip-desc">${p.description}</p>
+              <ul class="ip-benefits-list">
+                ${p.benefits.map(b => `
+                  <li>
+                    <span class="ip-benefit-dot"><i class="fa-solid fa-check"></i></span>
+                    <span>${b}</span>
+                  </li>
+                `).join('')}
+              </ul>
+              <div class="ip-how-to">
+                <div class="ip-how-label"><i class="fa-solid fa-circle-info"></i> HOW TO USE</div>
+                <p class="ip-how-text">${p.how_to_use}</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    `;
+  }).join('');
+}
+
+/* ===== TESTIMONIALS - NEW GRID LAYOUT ===== */
 function buildTestimonials() {
   const track = document.getElementById('testimonialsTrack');
-  const dots = document.getElementById('testimoniaDots');
   if (!track || !siteData.testimonials) return;
-  
+
   track.innerHTML = siteData.testimonials.map(t => `
     <div class="tcard">
       <div class="tcard-inner">
-        <div class="tc-stars">${'★'.repeat(t.rating)}</div>
-        <p class="tc-text">"${t.review}"</p>
-        <div class="tc-author">
+        <div class="tc-top">
           <div class="tc-avatar">${t.avatar}</div>
-          <div>
+          <div class="tc-meta">
             <div class="tc-name">${t.name}</div>
-            <div class="tc-loc">${t.location}</div>
-            ${t.verified ? '<div class="tc-verified">✓ VERIFIED PURCHASE</div>' : ''}
+            <div class="tc-loc"><i class="fa-solid fa-location-dot"></i> ${t.location}</div>
           </div>
+          <div class="tc-rating">${'★'.repeat(t.rating)}</div>
         </div>
+        <p class="tc-text">"${t.review}"</p>
+        ${t.verified ? '<div class="tc-verified"><i class="fa-solid fa-circle-check"></i> VERIFIED PURCHASE</div>' : ''}
       </div>
     </div>
   `).join('');
-  
-  totalSlides = siteData.testimonials.length;
-  const dotCount = Math.ceil(totalSlides / visibleCards());
-  dots.innerHTML = Array.from({length: dotCount}, (_, i) => 
-    `<div class="tdot ${i===0?'active':''}" onclick="goToSlide(${i})"></div>`
-  ).join('');
-  
-  document.getElementById('prevBtn').addEventListener('click', () => prevSlide());
-  document.getElementById('nextBtn').addEventListener('click', () => nextSlide());
-  
-  startAutoSlide();
 }
 
-function goToSlide(index) {
-  const track = document.getElementById('testimonialsTrack');
-  const dots = document.querySelectorAll('.tdot');
-  const vc = visibleCards();
-  const maxIndex = Math.ceil(totalSlides / vc) - 1;
-  currentSlide = Math.max(0, Math.min(index, maxIndex));
-  const offset = (currentSlide * vc * 100) / totalSlides;
-  track.style.transform = `translateX(-${offset * totalSlides / totalSlides}%)`;
-  // Recalculate per card width
-  const cardWidth = 100 / vc;
-  track.style.transform = `translateX(-${currentSlide * cardWidth * vc / (totalSlides / vc) * (vc === 3 ? 100 : 100)}%)`;
-  // Simple approach: move by slide index * (100/totalSlides * vc)
-  const pct = currentSlide * (100 / Math.ceil(totalSlides / vc));
-  // Use simple translateX based on card percentage
-  const moveBy = currentSlide * vc;
-  const pctMove = (moveBy / totalSlides) * 100;
-  track.style.transform = `translateX(-${pctMove}%)`;
-  
-  dots.forEach((d, i) => d.classList.toggle('active', i === currentSlide));
-}
-
-function nextSlide() {
-  const vc = visibleCards();
-  const maxIndex = Math.ceil(totalSlides / vc) - 1;
-  goToSlide(currentSlide >= maxIndex ? 0 : currentSlide + 1);
-  resetAutoSlide();
-}
-
-function prevSlide() {
-  const vc = visibleCards();
-  const maxIndex = Math.ceil(totalSlides / vc) - 1;
-  goToSlide(currentSlide <= 0 ? maxIndex : currentSlide - 1);
-  resetAutoSlide();
-}
-
-function startAutoSlide() {
-  slideInterval = setInterval(nextSlide, 5000);
-}
-
-function resetAutoSlide() {
-  clearInterval(slideInterval);
-  startAutoSlide();
-}
+function initTestimonials() {}
 
 /* FAQ */
 function buildFAQ() {
@@ -355,6 +361,7 @@ function buildFAQ() {
   grid.innerHTML = siteData.faqs.map((f, i) => `
     <div class="faq-item reveal-up" id="faq-${i}">
       <div class="faq-question" onclick="toggleFAQ(${i})">
+        <span class="faq-icon-left"><i class="${f.fa_icon}"></i></span>
         <span class="faq-q-text">${f.question}</span>
         <span class="faq-icon">+</span>
       </div>
@@ -365,7 +372,7 @@ function buildFAQ() {
   `).join('');
 }
 
-function initFAQ() {} // called from buildFAQ
+function initFAQ() {}
 
 function toggleFAQ(index) {
   const item = document.getElementById(`faq-${index}`);
@@ -386,8 +393,7 @@ function initStats() {
       }
     });
   }, { threshold: 0.5 });
-  
-  // Wait for stats to be built
+
   setTimeout(() => {
     document.querySelectorAll('.stat-number').forEach(el => observer.observe(el));
   }, 500);
@@ -402,7 +408,7 @@ function animateCounter(el) {
   const step = target / steps;
   let current = 0;
   let count = 0;
-  
+
   const interval = setInterval(() => {
     count++;
     current = Math.min(current + step, target);
@@ -422,8 +428,7 @@ function initScrollReveal() {
       }
     });
   }, { threshold: 0.1, rootMargin: '0px 0px -60px 0px' });
-  
-  // Observe initial elements + wait for dynamic content
+
   const observe = () => {
     document.querySelectorAll('.reveal-up, .reveal-left, .reveal-right, .reveal-fade').forEach(el => {
       if (!el.classList.contains('revealed')) observer.observe(el);
@@ -432,6 +437,7 @@ function initScrollReveal() {
   observe();
   setTimeout(observe, 500);
   setTimeout(observe, 1000);
+  setTimeout(observe, 2000);
 }
 
 /* ===== CONTACT FORM ===== */
@@ -446,12 +452,12 @@ function initContactForm() {
 }
 
 /* ===== LIGHTBOX ===== */
-function openLightbox(name, latin, benefit, icon) {
+function openIngredientLightbox(name, latin, benefit, fa_icon) {
   const lb = document.getElementById('lightbox');
   const body = document.getElementById('lightboxBody');
   body.innerHTML = `
     <div style="text-align:center; padding: 20px 0;">
-      <div style="font-size:3rem; margin-bottom:16px;">${icon}</div>
+      <div style="font-size:3rem; margin-bottom:16px; color:var(--gold)"><i class="${fa_icon}"></i></div>
       <h2 style="font-family:var(--font-head); font-size:1.8rem; color:var(--gold); letter-spacing:2px; margin-bottom:6px;">${name}</h2>
       <p style="font-size:0.8rem; color:var(--white3); font-style:italic; margin-bottom:24px;">${latin}</p>
       <p style="font-size:1rem; line-height:1.7; color:var(--white2); max-width:400px; margin:0 auto;">${benefit}</p>
@@ -461,6 +467,10 @@ function openLightbox(name, latin, benefit, icon) {
   `;
   lb.classList.add('open');
   document.body.style.overflow = 'hidden';
+}
+
+function openLightbox(name, latin, benefit, icon) {
+  openIngredientLightbox(name, latin, benefit, icon);
 }
 
 function closeLightbox() {
@@ -481,10 +491,10 @@ function initCursorGlow() {
   const glow = document.createElement('div');
   glow.className = 'cursor-glow';
   document.body.appendChild(glow);
-  
+
   let mx = 0, my = 0, cx = 0, cy = 0;
   document.addEventListener('mousemove', e => { mx = e.clientX; my = e.clientY; });
-  
+
   function updateGlow() {
     cx += (mx - cx) * 0.08;
     cy += (my - cy) * 0.08;
@@ -499,17 +509,17 @@ function initCursorGlow() {
 function initMouseParallax() {
   const hero = document.querySelector('.hero');
   if (!hero) return;
-  
+
   hero.addEventListener('mousemove', e => {
     const rect = hero.getBoundingClientRect();
     const x = (e.clientX - rect.width / 2) / rect.width;
     const y = (e.clientY - rect.height / 2) / rect.height;
-    
+
     const product = document.getElementById('heroProduct');
     if (product) {
-      product.style.transform = `translateY(${-20 * Math.sin(Date.now()/2000)}px) rotateX(${y * 5}deg) rotateY(${x * 5}deg)`;
+      product.style.transform = `translateY(${-20 * Math.sin(Date.now() / 2000)}px) rotateX(${y * 5}deg) rotateY(${x * 5}deg)`;
     }
-    
+
     const glowL = document.querySelector('.hero-glow-left');
     if (glowL) {
       glowL.style.transform = `translate(${x * 30}px, ${y * 20}px)`;
@@ -521,28 +531,28 @@ function initMouseParallax() {
 document.addEventListener('click', e => {
   const btn = e.target.closest('.btn-gold');
   if (!btn) return;
-  
+
   const ripple = document.createElement('span');
   const rect = btn.getBoundingClientRect();
   const size = Math.max(rect.width, rect.height) * 2;
-  
+
   ripple.style.cssText = `
     position: absolute; border-radius: 50%;
     width: ${size}px; height: ${size}px;
-    left: ${e.clientX - rect.left - size/2}px;
-    top: ${e.clientY - rect.top - size/2}px;
+    left: ${e.clientX - rect.left - size / 2}px;
+    top: ${e.clientY - rect.top - size / 2}px;
     background: rgba(255,255,255,0.2);
     transform: scale(0); animation: rippleAnim 0.6s ease-out forwards;
     pointer-events: none;
   `;
-  
+
   if (!document.getElementById('rippleStyle')) {
     const style = document.createElement('style');
     style.id = 'rippleStyle';
     style.textContent = '@keyframes rippleAnim { to { transform: scale(1); opacity: 0; } }';
     document.head.appendChild(style);
   }
-  
+
   btn.style.position = 'relative';
   btn.style.overflow = 'hidden';
   btn.appendChild(ripple);
