@@ -1,0 +1,320 @@
+{
+    "brand": {
+        "name": "POWER 69",
+        "tagline": "MEN'S SEXUAL WELLNESS KIT",
+        "slogan": "COMPLETE CARE. MAXIMUM CONFIDENCE.",
+        "logo_symbol": "⚡"
+    },
+    "hero": {
+        "headline": "Unleash Peak Performance.",
+        "headline2": "Maximize Confidence.",
+        "subheadline": "Complete Men's Wellness Solution Designed For Performance, Stamina, Vitality & Confidence.",
+        "cta_primary": "Buy Now — ₹1,999",
+        "cta_secondary": "Explore Benefits"
+    },
+    "features": [
+        {
+            "icon": "💪",
+            "svg_icon": "performance",
+            "title": "PERFORMANCE",
+            "desc": "Amplify your physical performance and bedroom confidence with our clinically-inspired formula."
+        },
+        {
+            "icon": "⏱",
+            "svg_icon": "stamina",
+            "title": "STAMINA",
+            "desc": "Support lasting endurance and sustained energy levels through every challenge you face."
+        },
+        {
+            "icon": "🔥",
+            "svg_icon": "vitality",
+            "title": "VITALITY",
+            "desc": "Restore natural vitality, strengthen your body's core functions and feel alive every day."
+        },
+        {
+            "icon": "♂",
+            "svg_icon": "confidence",
+            "title": "CONFIDENCE",
+            "desc": "Build unshakeable confidence backed by science, nature, and premium wellness standards."
+        }
+    ],
+    "products": [
+        {
+            "id": 1,
+            "name": "Performance Oil",
+            "subtitle": "Massage Oil to Enhance Performance",
+            "volume": "30 ml",
+            "icon": "💪",
+            "color": "#C9A84C",
+            "description": "Premium massage oil infused with potent herbal extracts. Designed to improve blood circulation, enhance sensitivity, and maximize your performance naturally.",
+            "benefits": [
+                "Improves blood circulation",
+                "Enhances nerve sensitivity",
+                "Fast-acting formula",
+                "All-natural ingredients",
+                "No harmful chemicals"
+            ],
+            "how_to_use": "Apply 4-5 drops and massage gently for 5-10 minutes before activity."
+        },
+        {
+            "id": 2,
+            "name": "Performance Capsules",
+            "subtitle": "Stamina | Energy | Vitality",
+            "volume": "60 Capsules",
+            "icon": "⏱",
+            "color": "#C9A84C",
+            "description": "Advanced wellness capsules powered by Ayurvedic herbs. A complete internal formula to boost stamina, restore energy, and support long-term vitality.",
+            "benefits": [
+                "Boosts stamina & energy",
+                "Supports hormonal balance",
+                "Reduces fatigue & stress",
+                "Enhances overall vitality",
+                "60 capsules – 30 day supply"
+            ],
+            "how_to_use": "Take 2 capsules daily with warm milk or water. Best taken after meals."
+        },
+        {
+            "id": 3,
+            "name": "Power Laddu",
+            "subtitle": "Natural Strength & Stamina Booster",
+            "volume": "10 Laddu",
+            "icon": "🔥",
+            "color": "#C9A84C",
+            "description": "Traditional Ayurvedic recipe modernized with premium herbal ingredients. Each laddu delivers concentrated strength, stamina, and energy support in a delicious form.",
+            "benefits": [
+                "Natural strength booster",
+                "Energy enhancer",
+                "Traditional Ayurvedic formula",
+                "No artificial additives",
+                "10 premium laddus"
+            ],
+            "how_to_use": "Consume 1 laddu daily in the morning with warm milk for best results."
+        }
+    ],
+    "why_power69": [
+        {
+            "title": "Natural Ingredients",
+            "desc": "Every ingredient is carefully sourced from certified Ayurvedic farms. Pure, potent, and free from harmful chemicals or synthetic additives.",
+            "icon": "🌿"
+        },
+        {
+            "title": "Advanced Formula",
+            "desc": "Our proprietary blend combines ancient Ayurvedic wisdom with modern wellness science to deliver results that truly work.",
+            "icon": "⚗️"
+        },
+        {
+            "title": "Complete Men's Care",
+            "desc": "The only kit that addresses all aspects of men's wellness — external application, internal nutrition, and stamina support in one package.",
+            "icon": "🛡️"
+        },
+        {
+            "title": "Premium Standards",
+            "desc": "Manufactured in GMP-certified facilities with rigorous quality testing at every stage. What goes in the kit is what's on the label.",
+            "icon": "🏆"
+        }
+    ],
+    "benefits_timeline": [
+        {
+            "week": "Week 1",
+            "title": "Enhanced Energy",
+            "desc": "Feel the surge of renewed energy and reduced fatigue from day one of your wellness journey."
+        },
+        {
+            "week": "Week 2",
+            "title": "Improved Stamina",
+            "desc": "Notice significant improvements in your endurance and lasting power during physical activity."
+        },
+        {
+            "week": "Week 3",
+            "title": "Peak Performance",
+            "desc": "Experience heightened performance levels, stronger vitality, and increased drive."
+        },
+        {
+            "week": "Week 4",
+            "title": "Maximum Confidence",
+            "desc": "Achieve complete wellness transformation — confident, energized, and performing at your absolute best."
+        }
+    ],
+    "ingredients": [
+        {
+            "name": "Ashwagandha",
+            "latin": "Withania somnifera",
+            "benefit": "The king of Ayurvedic herbs. Reduces cortisol, boosts testosterone, and enhances stamina naturally.",
+            "icon": "🌱"
+        },
+        {
+            "name": "Shilajit",
+            "latin": "Purified Mineral Resin",
+            "benefit": "Himalayan superfood that restores energy at the cellular level and supports male vitality.",
+            "icon": "⛰️"
+        },
+        {
+            "name": "Safed Musli",
+            "latin": "Chlorophytum borivilianum",
+            "benefit": "Premium aphrodisiac herb known to enhance vigor, vitality, and reproductive health.",
+            "icon": "🌾"
+        },
+        {
+            "name": "Gokshura",
+            "latin": "Tribulus terrestris",
+            "benefit": "Natural testosterone booster that supports muscle strength and male wellness functions.",
+            "icon": "🌿"
+        },
+        {
+            "name": "Kaunch Beej",
+            "latin": "Mucuna pruriens",
+            "benefit": "Rich in L-DOPA, supports mood, libido, and healthy hormonal balance in men.",
+            "icon": "🫘"
+        },
+        {
+            "name": "Shatavari",
+            "latin": "Asparagus racemosus",
+            "benefit": "Powerful adaptogen that reduces stress, improves energy, and supports reproductive health.",
+            "icon": "🌺"
+        }
+    ],
+    "statistics": [
+        {
+            "number": 50000,
+            "suffix": "+",
+            "label": "Happy Customers"
+        },
+        {
+            "number": 95,
+            "suffix": "%",
+            "label": "Customer Satisfaction"
+        },
+        {
+            "number": 4.9,
+            "suffix": "★",
+            "label": "Average Rating"
+        },
+        {
+            "number": 100,
+            "suffix": "%",
+            "label": "Natural Ingredients"
+        }
+    ],
+    "testimonials": [
+        {
+            "name": "Rajesh Kumar",
+            "location": "Mumbai",
+            "rating": 5,
+            "review": "Power 69 is absolutely life-changing. Within 3 weeks, I felt like a completely different man. The energy levels, the confidence — everything improved dramatically. Best investment I've made for my health.",
+            "verified": true,
+            "avatar": "RK"
+        },
+        {
+            "name": "Vikram Singh",
+            "location": "Delhi",
+            "rating": 5,
+            "review": "I was skeptical at first, but the results speak for themselves. The complete kit approach — oil, capsules, and laddu — is what makes it so effective. The packaging itself feels premium.",
+            "verified": true,
+            "avatar": "VS"
+        },
+        {
+            "name": "Arjun Mehta",
+            "location": "Bangalore",
+            "rating": 5,
+            "review": "Outstanding product. The Performance Oil works incredibly fast and the capsules gave me sustained energy throughout the day. My confidence is at an all-time high. Highly recommend!",
+            "verified": true,
+            "avatar": "AM"
+        },
+        {
+            "name": "Suresh Patel",
+            "location": "Chennai",
+            "rating": 5,
+            "review": "The Power Laddu is something else entirely. Traditional taste, modern results. Combined with the capsules, I've seen a massive improvement in my overall wellness. 100% worth it.",
+            "verified": true,
+            "avatar": "SP"
+        },
+        {
+            "name": "Karthik Reddy",
+            "location": "Hyderabad",
+            "rating": 5,
+            "review": "Tried many products before. Nothing compares to Power 69. The quality of ingredients is unmatched and customer service was excellent. Already on my second kit!",
+            "verified": true,
+            "avatar": "KR"
+        }
+    ],
+    "faqs": [
+        {
+            "question": "What is POWER 69 Men's Wellness Kit?",
+            "answer": "POWER 69 is a comprehensive men's sexual wellness kit containing 3 premium products: Performance Oil (30ml), Performance Capsules (60 caps), and Power Laddu (10 pcs). Together, they provide a complete solution for performance, stamina, vitality, and confidence."
+        },
+        {
+            "question": "How soon will I see results?",
+            "answer": "Most customers report feeling increased energy within the first week. Significant improvements in stamina and performance are typically noticed within 2-3 weeks of consistent use. For best results, complete a full 30-day cycle."
+        },
+        {
+            "question": "Are the ingredients safe and natural?",
+            "answer": "Yes, absolutely. All ingredients in POWER 69 are 100% natural, Ayurvedic herbs sourced from certified farms. Our formula is free from synthetic chemicals, steroids, or harmful additives. It has been tested for purity and potency."
+        },
+        {
+            "question": "How do I use the complete kit?",
+            "answer": "Use the Performance Oil externally by applying 4-5 drops and massaging gently for 5-10 minutes. Take 2 Performance Capsules daily with warm milk after meals. Consume 1 Power Laddu every morning with warm milk. Follow this routine consistently for best results."
+        },
+        {
+            "question": "Is POWER 69 suitable for all ages?",
+            "answer": "POWER 69 is designed for adult men aged 18 and above. Men aged 30-60 tend to see the most significant results as the formula targets age-related wellness concerns. If you have any medical conditions, consult your physician before use."
+        },
+        {
+            "question": "What is the return and refund policy?",
+            "answer": "We stand behind our product with a 30-day satisfaction guarantee. If you're not completely satisfied with your results, contact our customer support team within 30 days of purchase for a full refund. Your trust matters to us."
+        },
+        {
+            "question": "How is POWER 69 different from other products?",
+            "answer": "POWER 69 is the only complete 3-in-1 wellness kit addressing all dimensions of men's health — external care, internal nutrition, and traditional Ayurvedic wisdom. Our premium packaging, sourcing standards, and clinically-inspired formula set us apart from single-product solutions."
+        },
+        {
+            "question": "How do I place an order and what are the delivery options?",
+            "answer": "You can order directly from our website. We offer fast shipping across India with delivery in 3-5 business days. Discreet packaging is guaranteed for your privacy. We accept Credit/Debit Cards, UPI, and Cash on Delivery."
+        }
+    ],
+    "pricing": {
+        "original": 2999,
+        "current": 1999,
+        "discount": "33% OFF",
+        "currency": "₹",
+        "includes": [
+            "Performance Oil 30ml",
+            "Performance Capsules 60 caps",
+            "Power Laddu 10 pcs",
+            "Premium Gift Box",
+            "Free Shipping"
+        ]
+    },
+    "contact": {
+        "phone": "+91 98765 43210",
+        "email": "care@power69wellness.com",
+        "address": "Power 69 Wellness Pvt. Ltd., Chennai, Tamil Nadu, India",
+        "hours": "Mon - Sat: 9:00 AM - 7:00 PM IST"
+    },
+    "trust_badges": [
+        {
+            "icon": "✓",
+            "title": "Premium Quality",
+            "desc": "GMP Certified"
+        },
+        {
+            "icon": "✓",
+            "title": "Natural Ingredients",
+            "desc": "100% Ayurvedic"
+        },
+        {
+            "icon": "✓",
+            "title": "Lab Tested",
+            "desc": "Quality Assured"
+        },
+        {
+            "icon": "✓",
+            "title": "50,000+ Customers",
+            "desc": "Trusted Brand"
+        },
+        {
+            "icon": "✓",
+            "title": "Discreet Shipping",
+            "desc": "Private Packaging"
+        }
+    ]
+}

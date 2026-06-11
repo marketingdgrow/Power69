@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Checkout — POWER 69 Men's Wellness Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <link rel="stylesheet" href="checkout.css" />
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="co-nav">
+  <div class="co-nav-inner">
+    <a href="index.html" class="co-logo">
+      <span class="co-bolt"><i class="fas fa-bolt"></i></span> POWER <span class="co-gold">69</span><i class="fas fa-mars"></i>
+    </a>
+    <div class="co-steps">
+      <div class="co-step active"><span>1</span> Cart</div>
+      <div class="co-step-line"></div>
+      <div class="co-step" id="step2"><span>2</span> Shipping</div>
+      <div class="co-step-line"></div>
+      <div class="co-step" id="step3"><span>3</span> Payment</div>
+    </div>
+    <div class="co-secure"><i class="fas fa-lock"></i> Secure Checkout</div>
+  </div>
+</nav>
+
+<!-- MAIN -->
+<main class="co-main">
+  <div class="co-container">
+
+    <!-- LEFT: FORM -->
+    <div class="co-form-col">
+
+      <!-- STEP 1: ORDER SUMMARY -->
+      <div class="co-section" id="sectionCart">
+        <div class="co-section-head">
+          <div class="co-section-num">01</div>
+          <h2>Order Summary</h2>
+        </div>
+        <div class="co-cart-item">
+          <div class="co-cart-visual">
+            <div class="cart-product-box">
+              <div class="cpb-brand">P<i class="fas fa-bolt"></i>WER <span class="co-gold">69</span></div>
+              <div class="cpb-name">MEN'S WELLNESS KIT</div>
+              <div class="cpb-icons"><i class="fas fa-dumbbell"></i> <i class="fas fa-hourglass-end"></i> <i class="fas fa-fire"></i> <i class="fas fa-mars"></i></div>
+              <div class="cpb-wave"></div>
+            </div>
+          </div>
+          <div class="co-cart-info">
+            <div class="co-cart-name">POWER 69 — Men's Sexual Wellness Kit</div>
+            <div class="co-cart-includes">
+              <span><i class="fas fa-check"></i> Performance Oil 30ml</span>
+              <span><i class="fas fa-check"></i> Performance Capsules 60 caps</span>
+              <span><i class="fas fa-check"></i> Power Laddu 10 pcs</span>
+              <span><i class="fas fa-check"></i> Premium Gift Box</span>
+            </div>
+            <div class="co-cart-prices">
+              <span class="cop-old">₹2,999</span>
+              <span class="cop-new">₹1,999</span>
+              <span class="cop-save">33% OFF</span>
+            </div>
+          </div>
+        </div>
+        <!-- Quantity -->
+        <div class="co-qty-row">
+          <span class="co-qty-label">Quantity</span>
+          <div class="co-qty-ctrl">
+            <button class="qty-btn" id="qtyMinus">−</button>
+            <span class="qty-val" id="qtyVal">1</span>
+            <button class="qty-btn" id="qtyPlus">+</button>
+          </div>
+        </div>
+        <!-- Coupon -->
+        <div class="co-coupon-row">
+          <div class="co-form-group" style="flex:1;">
+            <label>Coupon Code</label>
+            <input type="text" id="couponInput" placeholder="Enter coupon code" />
+          </div>
+          <button class="btn-apply" id="applyBtn">APPLY</button>
+        </div>
+        <div class="co-coupon-msg" id="couponMsg"></div>
+        <button class="btn-next" onclick="goStep(2)">Continue to Shipping →</button>
+      </div>
+
+      <!-- STEP 2: SHIPPING ADDRESS -->
+      <div class="co-section hidden" id="sectionShipping">
+        <div class="co-section-head">
+          <div class="co-section-num">02</div>
+          <h2>Shipping Address</h2>
+        </div>
+        <form id="shippingForm">
+          <div class="co-form-row">
+            <div class="co-form-group">
+              <label>First Name *</label>
+              <input type="text" id="fname" placeholder="First name" required />
+            </div>
+            <div class="co-form-group">
+              <label>Last Name *</label>
+              <input type="text" id="lname" placeholder="Last name" required />
+            </div>
+          </div>
+          <div class="co-form-row">
+            <div class="co-form-group">
+              <label>Phone Number *</label>
+              <input type="tel" id="phone" placeholder="+91 00000 00000" required />
+            </div>
+            <div class="co-form-group">
+              <label>Email Address *</label>
+              <input type="email" id="email" placeholder="your@email.com" required />
+            </div>
+          </div>
+          <div class="co-form-group">
+            <label>Address Line 1 *</label>
+            <input type="text" id="addr1" placeholder="House/Flat No., Street Name" required />
+          </div>
+          <div class="co-form-group">
+            <label>Address Line 2</label>
+            <input type="text" id="addr2" placeholder="Apartment, Area, Landmark" />
+          </div>
+          <div class="co-form-row">
+            <div class="co-form-group">
+              <label>City *</label>
+              <input type="text" id="city" placeholder="City" required />
+            </div>
+            <div class="co-form-group">
+              <label>State *</label>
+              <select id="state" required>
+                <option value="">Select State</option>
+                <option>Tamil Nadu</option>
+                <option>Maharashtra</option>
+                <option>Karnataka</option>
+                <option>Delhi</option>
+                <option>Uttar Pradesh</option>
+                <option>Gujarat</option>
+                <option>Rajasthan</option>
+                <option>West Bengal</option>
+                <option>Andhra Pradesh</option>
+                <option>Telangana</option>
+                <option>Kerala</option>
+                <option>Punjab</option>
+                <option>Haryana</option>
+                <option>Bihar</option>
+                <option>Madhya Pradesh</option>
+                <option>Other</option>
+              </select>
+            </div>
+            <div class="co-form-group">
+              <label>PIN Code *</label>
+              <input type="text" id="pin" placeholder="6-digit PIN" maxlength="6" required />
+            </div>
+          </div>
+          <div class="co-check-row">
+            <label class="co-checkbox">
+              <input type="checkbox" id="sameAsBilling" checked />
+              <span class="co-checkmark"></span>
+              Billing address same as shipping
+            </label>
+          </div>
+        </form>
+
+        <!-- BILLING ADDRESS -->
+        <div id="billingSection" class="hidden" style="margin-top:24px;">
+          <div class="co-section-head" style="margin-bottom:20px;">
+            <div class="co-section-num" style="font-size:1.2rem;">02B</div>
+            <h3>Billing Address</h3>
+          </div>
+          <div class="co-form-row">
+            <div class="co-form-group">
+              <label>Full Name *</label>
+              <input type="text" placeholder="Full name" />
+            </div>
+            <div class="co-form-group">
+              <label>Phone *</label>
+              <input type="tel" placeholder="+91 00000 00000" />
+            </div>
+          </div>
+          <div class="co-form-group">
+            <label>Address *</label>
+            <input type="text" placeholder="Billing address" />
+          </div>
+          <div class="co-form-row">
+            <div class="co-form-group">
+              <label>City *</label>
+              <input type="text" placeholder="City" />
+            </div>
+            <div class="co-form-group">
+              <label>PIN *</label>
+              <input type="text" placeholder="PIN" maxlength="6" />
+            </div>
+          </div>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:24px;">
+          <button class="btn-back" onclick="goStep(1)">← Back</button>
+          <button class="btn-next" onclick="validateShipping()">Continue to Payment →</button>
+        </div>
+      </div>
+
+      <!-- STEP 3: PAYMENT -->
+      <div class="co-section hidden" id="sectionPayment">
+        <div class="co-section-head">
+          <div class="co-section-num">03</div>
+          <h2>Payment Method</h2>
+        </div>
+
+        <!-- Payment Options -->
+        <div class="payment-options">
+          <div class="pay-option active" id="payCard" onclick="selectPayment('card')">
+            <div class="pay-radio"><div class="pay-radio-dot"></div></div>
+            <div class="pay-label">
+              <span class="pay-icon"><i class="fas fa-credit-card"></i></span>
+              <div>
+                <div class="pay-name">Credit / Debit Card</div>
+                <div class="pay-sub">Visa, Mastercard, RuPay</div>
+              </div>
+            </div>
+            <div class="pay-cards">
+              <span class="card-badge">VISA</span>
+              <span class="card-badge">MC</span>
+              <span class="card-badge">RP</span>
+            </div>
+          </div>
+
+          <div class="pay-option" id="payUPI" onclick="selectPayment('upi')">
+            <div class="pay-radio"><div class="pay-radio-dot"></div></div>
+            <div class="pay-label">
+              <span class="pay-icon"><i class="fas fa-mobile-alt"></i></span>
+              <div>
+                <div class="pay-name">UPI Payment</div>
+                <div class="pay-sub">GPay, PhonePe, Paytm, BHIM</div>
+              </div>
+            </div>
+            <div class="pay-cards">
+              <span class="card-badge">UPI</span>
+            </div>
+          </div>
+
+          <div class="pay-option" id="payCOD" onclick="selectPayment('cod')">
+            <div class="pay-radio"><div class="pay-radio-dot"></div></div>
+            <div class="pay-label">
+              <span class="pay-icon"><i class="fas fa-money-bill"></i></span>
+              <div>
+                <div class="pay-name">Cash on Delivery</div>
+                <div class="pay-sub">Pay when you receive</div>
+              </div>
+            </div>
+            <div class="pay-cards">
+              <span class="card-badge" style="color:#4CAF50;">COD</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- CARD FORM -->
+        <div class="pay-form-section" id="cardForm">
+          <div class="card-visual" id="cardVisual">
+            <div class="cv-chip"><i class="fas fa-microchip"></i></div>
+            <div class="cv-number" id="cvNumber">•••• •••• •••• ••••</div>
+            <div class="cv-bottom">
+              <div>
+                <div class="cv-label">CARD HOLDER</div>
+                <div class="cv-value" id="cvName">YOUR NAME</div>
+              </div>
+              <div>
+                <div class="cv-label">EXPIRES</div>
+                <div class="cv-value" id="cvExpiry">MM / YY</div>
+              </div>
+              <div class="cv-logo">P<span>69</span></div>
+            </div>
+          </div>
+          <div class="co-form-group">
+            <label>Card Number *</label>
+            <input type="text" id="cardNum" placeholder="1234 5678 9012 3456" maxlength="19" oninput="formatCard(this)" />
+          </div>
+          <div class="co-form-row">
+            <div class="co-form-group">
+              <label>Card Holder Name *</label>
+              <input type="text" id="cardName" placeholder="Name on card" oninput="document.getElementById('cvName').textContent = this.value.toUpperCase() || 'YOUR NAME'" />
+            </div>
+            <div class="co-form-group">
+              <label>Expiry Date *</label>
+              <input type="text" id="cardExpiry" placeholder="MM / YY" maxlength="7" oninput="formatExpiry(this)" />
+            </div>
+            <div class="co-form-group">
+              <label>CVV *</label>
+              <input type="password" id="cardCvv" placeholder="•••" maxlength="4" />
+            </div>
+          </div>
+        </div>
+
+        <!-- UPI FORM -->
+        <div class="pay-form-section hidden" id="upiForm">
+          <div class="upi-options">
+            <div class="upi-btn" onclick="selectUPI(this)"><i class="fab fa-google"></i> Google Pay</div>
+            <div class="upi-btn" onclick="selectUPI(this)"><i class="fas fa-mobile-alt"></i> PhonePe</div>
+            <div class="upi-btn" onclick="selectUPI(this)"><i class="fas fa-wallet"></i> Paytm</div>
+            <div class="upi-btn" onclick="selectUPI(this)"><i class="fas fa-university"></i> BHIM UPI</div>
+          </div>
+          <div class="co-form-group" style="margin-top:20px;">
+            <label>Or Enter UPI ID</label>
+            <input type="text" placeholder="yourname@upi" />
+          </div>
+        </div>
+
+        <!-- COD FORM -->
+        <div class="pay-form-section hidden" id="codForm">
+          <div class="cod-info">
+            <div class="cod-icon"><i class="fas fa-box"></i></div>
+            <div>
+              <h4>Cash on Delivery Selected</h4>
+              <p>Pay ₹<span id="codTotal">1999</span> when your order is delivered. Our delivery agent will collect payment at your doorstep.</p>
+              <p class="cod-note"><i class="fas fa-exclamation-triangle"></i> Please keep exact change ready.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="co-secure-badges">
+          <span><i class="fas fa-lock"></i> 256-bit SSL</span>
+          <span><i class="fas fa-shield-alt"></i> Secure Payment</span>
+          <span><i class="fas fa-check"></i> PCI Compliant</span>
+        </div>
+
+        <div style="display:flex; gap:12px; margin-top:24px;">
+          <button class="btn-back" onclick="goStep(2)">← Back</button>
+          <button class="btn-place" id="placeOrderBtn" onclick="placeOrder()">
+            <span id="placeOrderText">Place Order — ₹<span id="finalTotal">1,999</span></span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- RIGHT: ORDER SUMMARY STICKY -->
+    <div class="co-summary-col">
+      <div class="co-summary-box">
+        <div class="cos-head">Order Summary</div>
+        <div class="cos-product">
+          <div class="cos-product-info">
+            <div class="cos-pname">POWER 69 Wellness Kit</div>
+            <div class="cos-pqty">Qty: <span id="summQty">1</span></div>
+          </div>
+          <div class="cos-pprice">₹<span id="summPrice">1,999</span></div>
+        </div>
+        <div class="cos-line-row">
+          <span>Original Price</span>
+          <span class="cos-strike">₹<span id="summOrig">2,999</span></span>
+        </div>
+        <div class="cos-line-row green">
+          <span>Discount (33% OFF)</span>
+          <span>−₹<span id="summDiscount">1,000</span></span>
+        </div>
+        <div class="cos-line-row" id="couponRow" style="display:none;">
+          <span>Coupon Discount</span>
+          <span class="cos-green">−₹<span id="summCoupon">0</span></span>
+        </div>
+        <div class="cos-line-row">
+          <span>Shipping</span>
+          <span class="cos-free">FREE</span>
+        </div>
+        <div class="cos-divider"></div>
+        <div class="cos-total-row">
+          <span>Total</span>
+          <span class="cos-total">₹<span id="summTotal">1,999</span></span>
+        </div>
+        <div class="cos-savings">
+          <i class="fas fa-gift"></i> You save ₹<span id="summSave">1,000</span> on this order!
+        </div>
+        <div class="cos-includes">
+          <div class="cos-inc-title">This Kit Includes:</div>
+          <div class="cos-inc-item"><i class="fas fa-check"></i> Performance Oil 30ml</div>
+          <div class="cos-inc-item"><i class="fas fa-check"></i> Performance Capsules 60 caps</div>
+          <div class="cos-inc-item"><i class="fas fa-check"></i> Power Laddu 10 pcs</div>
+          <div class="cos-inc-item"><i class="fas fa-check"></i> Premium Gift Box</div>
+          <div class="cos-inc-item"><i class="fas fa-check"></i> Free Shipping</div>
+        </div>
+        <div class="cos-trust">
+          <div class="cos-trust-item"><i class="fas fa-lock"></i> Discreet Packaging</div>
+          <div class="cos-trust-item"><i class="fas fa-undo"></i> 30-Day Returns</div>
+          <div class="cos-trust-item"><i class="fas fa-truck"></i> 3-5 Day Delivery</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<!-- ORDER CONFIRMATION MODAL -->
+<div class="confirm-modal" id="confirmModal">
+  <div class="confirm-overlay" onclick="closeConfirm()"></div>
+  <div class="confirm-box">
+    <div class="confirm-glow"></div>
+    <div class="confirm-icon"><i class="fas fa-check"></i></div>
+    <div class="confirm-title">Order Placed Successfully!</div>
+    <div class="confirm-sub">Thank you for choosing POWER 69</div>
+    <div class="confirm-order-id">Order #PW69-<span id="orderId"></span></div>
+    <div class="confirm-details">
+      <div class="cd-item"><span>Product:</span><span>POWER 69 Wellness Kit</span></div>
+      <div class="cd-item"><span>Quantity:</span><span id="confQty">1</span></div>
+      <div class="cd-item"><span>Total Paid:</span><span id="confTotal">₹1,999</span></div>
+      <div class="cd-item"><span>Delivery:</span><span>3–5 Business Days</span></div>
+      <div class="cd-item"><span>Packaging:</span><span>100% Discreet</span></div>
+    </div>
+    <p class="confirm-msg">A confirmation SMS & email will be sent to your registered contact. Our team will reach out within 24 hours.</p>
+    <a href="index.html" class="btn-confirm">← Back to Home</a>
+  </div>
+</div>
+
+<script src="checkout.js"></script>
+</body>
+</html>
