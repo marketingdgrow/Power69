@@ -223,24 +223,8 @@
             "avatar": "VS",
             "fa_verified_icon": "fa-solid fa-circle-check"
         },
-        {
-            "name": "Arjun Mehta",
-            "location": "Bangalore",
-            "rating": 5,
-            "review": "Outstanding product. The Performance Oil works incredibly fast and the capsules gave me sustained energy throughout the day. My confidence is at an all-time high. Highly recommend!",
-            "verified": true,
-            "avatar": "AM",
-            "fa_verified_icon": "fa-solid fa-circle-check"
-        },
-        {
-            "name": "Suresh Patel",
-            "location": "Chennai",
-            "rating": 5,
-            "review": "The Power Laddu is something else entirely. Traditional taste, modern results. Combined with the capsules, I've seen a massive improvement in my overall wellness. 100% worth it.",
-            "verified": true,
-            "avatar": "SP",
-            "fa_verified_icon": "fa-solid fa-circle-check"
-        },
+        
+       
         {
             "name": "Karthik Reddy",
             "location": "Hyderabad",

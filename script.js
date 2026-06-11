@@ -209,20 +209,64 @@ function buildProducts() {
   `).join('');
 }
 
-/* WHY - New 4-col grid with icon + stat */
+/* WHY — 4-col grid, plain gold icon (matches 4 Pillars style) */
 function buildWhy() {
-  const grid = document.getElementById('whyGrid');
-  if (!grid || !siteData.why_power69) return;
-  grid.innerHTML = siteData.why_power69.map(w => `
-    <div class="why-card reveal-up">
-      <div class="wc-icon-wrap">
-        <div class="wc-icon-bg"></div>
-        <div class="wc-icon"><i class="${w.fa_icon}"></i></div>
-      </div>
-      <div class="wc-title">${w.title}</div>
-      <p class="wc-desc">${w.desc}</p>
-    </div>
-  `).join('');
+    const grid = document.getElementById('whyGrid');
+    if (!grid || !siteData.why_power69) return;
+
+    /* SVG polygon shapes per cell position */
+    const shapes = [
+        { fill: '#0a1628', points: '0,0 440,0 380,260 0,260' },   /* top-left  — right edge slants in  */
+        { fill: '#0d1f3a', points: '60,0 440,0 440,260 0,260' },   /* top-right — left edge slants in   */
+        { fill: '#0d1f3a', points: '0,0 380,0 440,260 0,260' },    /* bot-left  — right edge slants out */
+        { fill: '#0a1628', points: '0,0 440,0 440,260 60,260' },   /* bot-right — left edge slants out  */
+    ];
+
+    /* Padding override for right-column cells */
+    const paddings = [
+        'padding:48px 60px 48px 44px;',
+        'padding:48px 44px 48px 60px;',
+        'padding:48px 60px 48px 44px;',
+        'padding:48px 44px 48px 60px;',
+    ];
+
+    const borders = [
+        'border-right:1px solid rgba(201,168,76,0.15); border-bottom:1px solid rgba(201,168,76,0.15);',
+        'border-bottom:1px solid rgba(201,168,76,0.15);',
+        'border-right:1px solid rgba(201,168,76,0.15);',
+        '',
+    ];
+
+    const cells = siteData.why_power69.map((w, i) => `
+        <div class="why-cell reveal-up" style="${borders[i]}">
+            <svg class="why-cell-svg" viewBox="0 0 440 260"
+                 preserveAspectRatio="none"
+                 xmlns="http://www.w3.org/2000/svg">
+                <polygon points="${shapes[i].points}" fill="${shapes[i].fill}"/>
+            </svg>
+            <div class="why-cell-content" style="${paddings[i]}">
+                <i class="${w.fa_icon} wc-icon"></i>
+                <div class="wc-line"></div>
+                <div class="wc-title">${w.title}</div>
+                <p class="wc-desc">${w.desc}</p>
+            </div>
+        </div>
+    `).join('');
+
+    /* Background diagonal SVG lines */
+    const bgSvg = `
+        <svg class="why-bg-svg" viewBox="0 0 960 520"
+             preserveAspectRatio="none"
+             xmlns="http://www.w3.org/2000/svg">
+            <line x1="0"   y1="0"   x2="960" y2="520" stroke="#C9A84C" stroke-width="0.8" opacity="0.18"/>
+            <line x1="480" y1="0"   x2="480" y2="520" stroke="#C9A84C" stroke-width="0.5" opacity="0.12"/>
+            <line x1="0"   y1="260" x2="960" y2="260" stroke="#C9A84C" stroke-width="0.5" opacity="0.12"/>
+        </svg>`;
+
+    /* Center emblem */
+    const emblem = `<div class="why-center-emblem">69</div>`;
+
+    grid.innerHTML = bgSvg + cells + emblem;
 }
 
 /* STATS */
@@ -257,17 +301,36 @@ function buildBenefits() {
 
 /* INGREDIENTS */
 function buildIngredients() {
-  const grid = document.getElementById('ingredientsGrid');
-  if (!grid || !siteData.ingredients) return;
-  grid.innerHTML = siteData.ingredients.map(ing => `
-    <div class="ingredient-card reveal-up" onclick="openIngredientLightbox('${ing.name}', '${ing.latin}', '${ing.benefit}', '${ing.fa_icon}')">
-      <div class="ic-icon"><i class="${ing.fa_icon}"></i></div>
-      <div class="ic-name">${ing.name}</div>
-      <div class="ic-latin">${ing.latin}</div>
-      <p class="ic-benefit">${ing.benefit}</p>
-      <div class="ic-learn">Learn More <i class="fa-solid fa-arrow-right"></i></div>
-    </div>
-  `).join('');
+    const grid = document.getElementById('ingredientsGrid');
+    if (!grid || !siteData.ingredients) return;
+
+    /* Center spine */
+    const spine = `<div class="dna-spine"></div>`;
+
+    /* DNA nodes */
+    const nodes = siteData.ingredients.map((ing, i) => `
+        <div class="dna-node reveal-up" style="transition-delay:${i * 100}ms;">
+
+            <div class="dna-content">
+                <div class="dc-name">${ing.name}</div>
+                <div class="dc-latin">${ing.latin}</div>
+                <div class="dc-line"></div>
+                <p class="dc-benefit">${ing.benefit}</p>
+            </div>
+
+            <div class="dna-rung"></div>
+
+            <div class="dna-connector">
+                <div class="dna-dot">
+                    <i class="${ing.fa_icon}"></i>
+                </div>
+                <div class="dna-num">0${i + 1}</div>
+            </div>
+
+        </div>
+    `).join('');
+
+    grid.innerHTML = spine + nodes;
 }
 
 /* ===== 3 INDIVIDUAL PRODUCT SECTIONS ===== */
